@@ -1,0 +1,618 @@
+#-*- coding: utf-8 -*-
+#:import C kivy.utils.get_color_from_hex
+
+<Main>:
+    ScrollView:
+        GridLayout:
+            id: gridlayout
+            padding: 50, 10, 50, 10
+            spacing: '50dp'
+            cols: 1
+            size_hint_y: None
+            height: self.minimum_height
+            canvas:
+                Color:
+                    rgb: C('#FFFFFF')
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            Label:
+                text: '1- IDENTIFICAÇÃO E CONTROLE'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+                height: '60sp'
+                color: C('#0F9C57')
+
+            Label:
+                text: '1.02 - UF de Origem'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+                color: C('#000000')
+
+            Spinner:
+                id: uf_origem
+                text: 'Selecionar...'
+                background_color: C('#0F9C57')
+                background_normal: ''
+                values: ('AC', 'AL', 'AP', 'CE', 'AM', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SO', 'SP', 'TO')
+                height: '40sp'
+                size_hint_y: None
+
+            Label:
+                text: '1.03 - Município de Origem'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+                color: C('#000000')
+                
+            TextInput:
+                id: municipio_origem
+                hint_text: 'Ex: Sao Paulo'
+                multiline: False
+                height: '40sp'
+                size_hint_y: None
+                padding_y: ( self.height - self.line_height ) / 2
+
+            Label:
+                text: 'Localização GPS: ' + str(app.lat) + ' - ' + str(app.long)
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+                color: C('#000000')
+
+            Label:
+                text: 'ENTREVISTADOR'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+                height: '60sp'
+                color: C('#0F9C57')
+
+            Label:
+                text: '1.11 - Nome'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+                color: C('#000000')
+
+            TextInput:
+                id: entrevistador_nome
+                hint_text: 'Ex: Victor'
+                multiline: False
+                height: '40sp'
+                size_hint_y: None
+                padding_y: ( self.height - self.line_height ) / 2
+
+            Label:
+                text: '1.12 - CPF do entrevistador'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+                color: C('#000000')
+
+            TextInput:
+                id: cpf
+                hint_text: 'Ex: 999.999.999.99'
+                multiline: False
+                height: '40sp'
+                size_hint_y: None
+                padding_y: ( self.height - self.line_height ) / 2
+
+            Label:
+                text: '1.13 - Observações'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+                color: C('#000000')
+
+            TextInput:
+                id: observacoes
+                hint_text: 'Escreva aqui...'
+                multiline: False
+                height: '40sp'
+                size_hint_y: None
+                padding_y: ( self.height - self.line_height ) / 2
+
+            Label:
+                text: '1.14 Respostas foram fornecidas pelo:'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+                color: C('#000000')
+
+            Spinner:
+                id: respostas_fornecidas
+                text: 'Selecionar...'
+                background_color: C('#0F9C57')
+                background_normal: ''
+                values: ('Entrevistador', 'Entrevistado')
+                height: '40sp'
+                size_hint_y: None
+
+            Label:
+                text: '2 - CADASTRAMENTO DA PESSOA EM SITUAÇÃO DE RUA'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+                height: '60sp'
+                color: C('#0F9C57')
+
+            Label:
+                text: '2.01 - Número de ordem'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+                color: C('#000000')
+            TextInput:
+                id: nro_ordem
+                multiline: False
+                height: '40sp'
+                size_hint_y: None
+                padding_y: ( self.height - self.line_height ) / 2
+
+            Label:
+                text: '2.02 - Nome completo'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+                color: C('#000000')
+            TextInput:
+                id: nome_entrevistado
+                multiline: False
+                height: '40sp'
+                size_hint_y: None
+                padding_y: ( self.height - self.line_height ) / 2
+
+            Label:
+                text: 'Apelido'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+                color: C('#000000')
+            TextInput:
+                id: apelido
+                multiline: False
+                height: '40sp'
+                size_hint_y: None
+                padding_y: ( self.height - self.line_height ) / 2
+
+            Label:
+                text: '2.03 - Identificação n. CPF'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+                color: C('#000000')
+            TextInput:
+                id: cpf_entrevistado
+                multiline: False
+                height: '40sp'
+                size_hint_y: None
+                padding_y: ( self.height - self.line_height ) / 2
+
+            Label:
+                text: '2.04 - Identificação n. RG'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+                color: C('#000000')
+            TextInput:
+                id: rg_entrevistado
+                multiline: False
+                height: '40sp'
+                size_hint_y: None
+                padding_y: ( self.height - self.line_height ) / 2
+
+            Label:
+                text: 'Complemento RG'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+                color: C('#000000')
+            TextInput:
+                id: rg_comple_entrevistado
+                multiline: False
+                height: '40sp'
+                size_hint_y: None
+                padding_y: ( self.height - self.line_height ) / 2
+
+            Label:
+                text: 'Data da Emissão RG'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+                color: C('#000000')
+            TextInput:
+                id: rg_dataemi_entrevistado
+                multiline: False
+                height: '40sp'
+                size_hint_y: None
+                padding_y: ( self.height - self.line_height ) / 2
+
+            Label:
+                text: 'Estado de emissão RG'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+                color: C('#000000')
+            Spinner:
+                id: rg_estadoemi_entrevistado
+                text: 'Selecionar...'
+                background_color: C('#0F9C57')
+                background_normal: ''
+                values: ('AC', 'AL', 'AP', 'CE', 'AM', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SO', 'SP', 'TO')
+                height: '40sp'
+                size_hint_y: None
+
+            Label:
+                text: 'Sigla do emitente RG'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+                color: C('#000000')
+            TextInput:
+                id: sigla_emissor_rg
+                multiline: False
+                height: '40sp'
+                size_hint_y: None
+                padding_y: ( self.height - self.line_height ) / 2
+
+            Label:
+                text: '2.04- Data de nascimento'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+                color: C('#000000')
+            TextInput:
+                id: nascimento_entrevistado
+                multiline: False
+                height: '40sp'
+                size_hint_y: None
+                padding_y: ( self.height - self.line_height ) / 2
+
+            Label:
+                text: '2.05- Grau de escolaridade'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+                color: C('#000000')
+            Spinner:
+                id: grau_escolaridade_entrevistado
+                text: 'Selecionar...'
+                background_color: C('#0F9C57')
+                background_normal: ''
+                values: ('Creche', 'Pré escola')
+                height: '40sp'
+                size_hint_y: None
+
+            Label:
+                text: '2.04 - Onde (nome) costuma dormir? Este quesito admite múltipla marcação'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+                color: C('#000000')
+
+            GridLayout:
+                cols: 5
+                rows: 5
+                spacing: '50dp'
+                row_default_height: '48dp'
+                row_force_default: True
+                # add these two lines
+                size_hint_y: None
+                height: self.minimum_height
+                canvas:
+                    Color:
+                        rgb: C('#FFF980')
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+
+                Label:
+                    text: ''
+                    text_size: self.size
+
+                Label:
+                    text: '1 dia /p semana'
+                    text_size: self.size
+                    color: C('#000000')
+
+                Label:
+                    text: '2 dias /p semana'
+                    text_size: self.size
+                    color: C('#000000')
+
+                Label:
+                    text: '3 dias /p semana'
+                    text_size: self.size
+                    color: C('#000000')
+
+                Label:
+                    text: 'Todos'
+                    text_size: self.size
+                    color: C('#000000')
+
+                Label:
+                    text: 'Rua'
+                    text_size: self.size
+                    color: C('#000000')
+
+                CheckBox:
+                    id: umaxsemana-01
+                    group: 'group1'
+                CheckBox:
+                    id: duasxsemana-01
+                    group: 'group1'
+                CheckBox:
+                    id: tresxsemana-01
+                    group: 'group1'
+                CheckBox:
+                    id: todosdias-01
+                    group: 'group1'
+
+                Label:
+                    text: 'Albergue'
+                    text_size: self.size
+                    color: C('#000000')
+
+                CheckBox:
+                    id: umaxsemana-02
+                    group: 'group2'
+                CheckBox:
+                    id: duasxsemana-02
+                    group: 'group2'
+                CheckBox:
+                    id: tresxsemana-02
+                    group: 'group2'
+                CheckBox:
+                    id: todosdias-02
+                    group: 'group2'
+
+                Label:
+                    text: 'Domícilio Particular'
+                    text_size: self.size
+                    color: C('#000000')
+
+                CheckBox:
+                    id: umaxsemana-03
+                    group: 'group3'
+                CheckBox:
+                    id: duasxsemana-03
+                    group: 'group3'
+                CheckBox:
+                    id: tresxsemana-03
+                    group: 'group3'
+                CheckBox:
+                    id: todosdias-04
+                    group: 'group3'
+
+                Label:
+                    text: 'Outro'
+                    text_size: self.size
+                    color: C('#000000')
+
+                CheckBox:
+                    id: umaxsemana-04
+                    group: 'group4'
+                CheckBox:
+                    id: duasxsemana-04
+                    group: 'group4'
+                CheckBox:
+                    id: tresxsemana-04
+                    group: 'group4'
+                CheckBox:
+                    id: todosdias-04
+                    group: 'group4'
+
+            Label:
+                text: '2.05 - Há quanto tempo (nome) vive na rua?'
+                text_size: self.size
+                color: C('#000000')
+
+            Spinner:
+                id: tempo_vive_rua
+                text: 'Selecionar...'
+                background_color: C('#0F9C57')
+                background_normal: ''
+                values: ('Até seis meses', 'Entre seis meses e um ano', 'Entre um e dois anos', 'Entre dois e cinco anos', 'Entre cinco e dez anos', 'Mais de dez anos')
+                height: '40sp'
+                size_hint_y: None
+
+            Label:
+                text: '2.06 - Quais os principais motivos pelos quais (nome) passou a morar na rua/albergue/outro? Este quesito admite múltipla marcação'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+                color: C('#000000')
+            Spinner:
+                id: motivo_mora_rua
+                text: 'Selecionar...'
+                background_color: C('#0F9C57')
+                background_normal: ''
+                values: ('Perda de moradia', 'Ameaça/ violência', 'Problemas com familiares/ companheiro (a)', 'Alcoolismo/ drogas', 'Desemprego', 'Trabalho', 'Tratamento de saúde', 'Preferência / opção própria', 'Outro', 'Não sabe / não lembra', 'Não respondeu')
+                height: '40sp'
+                size_hint_y: None
+
+            Label:
+                text: '2.07 - Há quanto tempo (nome) mora nesta cidade?'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+                color: C('#000000')
+            Spinner:
+                id: tempo_mora_cidade
+                text: 'Selecionar...'
+                background_color: C('#0F9C57')
+                background_normal: ''
+                values: ('Até seis meses', 'Entre seis meses e um ano', 'Entre um e dois anos', 'Entre dois e cinco anos', 'Entre cinco e dez anos', 'Mais de dez anos')
+                height: '40sp'
+                size_hint_y: None
+
+            Label:
+                text: '2.08 - Vive com sua família na rua ?'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+                color: C('#000000')
+            Spinner:
+                id: vive_familia
+                text: 'Selecionar...'
+                background_color: C('#0F9C57')
+                background_normal: ''
+                values: ('Sim', 'Não')
+                height: '40sp'
+                size_hint_y: None
+
+            Label:
+                text: '2.09 - Tem contato com parente que viva fora da rua?'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+                color: C('#000000')
+            Spinner:
+                id: contato_parente_fora_rua
+                text: 'Selecionar...'
+                background_color: C('#0F9C57')
+                background_normal: ''
+                values: ('Todo dia', 'Toda semana', 'Todo mês', 'Todo ano', 'Quase nunca', 'Nunca')
+                height: '40sp'
+                size_hint_y: None
+
+            Label:
+                text: '2.10 - Nos últimos seis meses (nome) frequentou ou participou de alguma atividade comunitária? Este quesito admite múltipla marcação'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+                color: C('#000000')
+            Spinner:
+                id: frenq_ativ_comunit
+                text: 'Selecionar...'
+                background_color: C('#0F9C57')
+                background_normal: ''
+                values: ('Escola', 'Associação', 'Cooperativa', 'Movimento social', 'Não sabe/ não lembra', 'Não respondeu')
+                height: '40sp'
+                size_hint_y: None
+
+            Label:
+                text: '2.11 - Nos últimos seis meses (nome) foi atendido em algum dos lugares listados abaixo? Este quesito admite múltipla marcação'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+                color: C('#000000')
+            Spinner:
+                id: local_atendimento
+                text: 'Selecionar...'
+                background_color: C('#0F9C57')
+                background_normal: ''
+                values: ('Centro de Referência da Assistência Social - CRAS', 'Centro de Referencia Especializado da Assistência Social - CREAS', 'Centro de referência para população em situação de rua- CentroPOP', 'Instituição de acolhimento governamental ( albergue/abrigo/outro)', 'Instituição de acolhimento não-governamental (instituição beneficente privada/outro)', 'Hospital/ clinica geral', 'Nenhum', 'Outro')
+                height: '40sp'
+                size_hint_y: None
+
+            Label:
+                text: '2.12 - Alguma vez (nome) teve emprego com carteira de trabalho assinada?'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+                color: C('#000000')
+            Spinner:
+                id: emprego_carteira
+                text: 'Selecionar...'
+                background_color: C('#0F9C57')
+                background_normal: ''
+                values: ('Sim', 'Não', 'Não Sabe')
+                height: '40sp'
+                size_hint_y: None
+
+            Label:
+                text: '2.13 - O que (nome) faz para ganhar dinheiro? Este quesito admite múltipla marcação'
+                text_size: self.size
+                halign: 'left'
+                valign: 'middle'
+                color: C('#000000')
+
+            GridLayout:
+                cols: 2
+                rows: 9
+                spacing: '50dp'
+                row_default_height: '48dp'
+                row_force_default: True
+                # add these two lines
+                size_hint_y: None
+                height: self.minimum_height
+                canvas:
+                    Color:
+                        rgb: C('#FFF980')
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+
+                Label:
+                    text: 'Construção civil'
+                    text_size: self.size
+                    color: C('#000000')
+                CheckBox:
+                    id: faz_ganha_dinheiro1
+
+                Label:
+                    text: 'Guardador de carro / flanelinha'
+                    text_size: self.size
+                    color: C('#000000')
+                CheckBox:
+                    id: faz_ganha_dinheiro2
+
+                Label:
+                    text: 'Carregador/ estivador'
+                    text_size: self.size
+                    color: C('#000000')
+                CheckBox:
+                    id: faz_ganha_dinheiro3
+
+                Label:
+                    text: 'Catador de material reciclável'
+                    text_size: self.size
+                    color: C('#000000')
+                CheckBox:
+                    id: faz_ganha_dinheiro4
+
+                Label:
+                    text: 'Serviços gerais/ limpeza/ outro'
+                    text_size: self.size
+                    color: C('#000000')
+                CheckBox:
+                    id: faz_ganha_dinheiro5
+
+                Label:
+                    text: 'Pede dinheiro'
+                    text_size: self.size
+                    color: C('#000000')
+                CheckBox:
+                    id: faz_ganha_dinheiro6
+
+                Label:
+                    text: 'Vendas'
+                    text_size: self.size
+                    color: C('#000000')
+                CheckBox:
+                    id: faz_ganha_dinheiro7
+
+                Label:
+                    text: 'Outro'
+                    text_size: self.size
+                    color: C('#000000')
+                CheckBox:
+                    id: faz_ganha_dinheiro8
+
+                Label:
+                    text: 'Não respondeu'
+                    text_size: self.size
+                    color: C('#000000')
+                CheckBox:
+                    id: faz_ganha_dinheiro9
+
+            Button:
+                text: 'Enviar Formulário'
+                on_release: root.sendData()
+                height: '40sp'
+                size_hint_y: None
